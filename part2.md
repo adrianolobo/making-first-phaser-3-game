@@ -5,10 +5,9 @@ date: 20th February 2018
 author: Richard Davey
 twitter: photonstorm
 ---
+Vamos carregar assets que precisamos para o nosso jogo. Você faz isso fazendo chamadas ao Phaser Loader dentro de uma função da Scene chamada `preload`. O Phaser procurará automaticamente por essa função quando for iniciado e carregará qualquer coisa definida nela.
 
-Let's load the assets we need for our game. You do this by putting calls to the Phaser Loader inside of a Scene function called `preload`. Phaser will automatically look for this function when it starts and load anything defined within it.
-
-Currently the `preload` function is empty. Change it to:
+Atualmente, a função `preload` está vazia. Altere para:
 
 ```
 function preload ()
@@ -24,23 +23,23 @@ function preload ()
 }
 ```
 
-This will load in 5 assets: 4 images and a sprite sheet. It may appear obvious to some of you, but I would like to point out the first parameter, also known as the asset key (i.e. 'sky', 'bomb'). This string is a link to the loaded asset and is what you'll use in your code when creating Game Objects. You're free to use any valid JavaScript string as the key.
+Isto irá carregar 5 assets: 4 imagens e uma sprite sheet. Pode parecer óbvio para alguns de vocês, mas eu gostaria de mostrar o primeiro parâmetro, também conhecido como chave do asset (ou seja, 'sky', 'bomba'). Essa string é um link para o asset carregado e é o que você usará no seu código para criar Game Objects. Você está livre para usar qualquer string JavaScript válida como chave.
 
-### Display an Image
+### Exibir uma imagem
 
-In order to display one of the images we've loaded place the following code inside the `create` function:
+Para exibir uma das imagens que carregamos, coloque o seguinte código dentro da função `create`:
 
 `this.add.image(400, 300, 'sky');`
 
-You can find this in `part3.html`. If you load it in a browser you should now see a game screen with a blue sky backdrop covering it:
+Você pode encontrar isso em `part3.html`. Se você abri-lo em um navegador, você deve ver uma tela de jogo com um plano de fundo de céu azul cobrindo-o:
 
 ![image](part3.png)
 
-The values `400` and `300` are the x and y coordinates of the image. Why 400 and 300? It's because in Phaser 3 all Game Objects are positioned based on their center by default. The background image is 800 x 600 pixels in size, so if we were to display it centered at 0 x 0 you'd only see the bottom-right corner of it. If we display it at 400 x 300 you see the whole thing.
+Os valores `400` e` 300` são as coordenadas x e y da imagem. Por que 400 e 300? É porque no Phaser 3 todos os objetos do jogo são posicionados com base em seu centro por padrão. A imagem de fundo tem 800 x 600 pixels de tamanho, por isso, se fôssemos exibir ela centralizada em 0 x 0, veríamos apenas o canto inferior direito dela. Se o exibirmos em 400 x 300 você verá ela toda.
 
-**Hint:** You can use `setOrigin` to change this. For example the code: `this.add.image(0, 0, 'sky').setOrigin(0, 0)` would reset the drawing position of the image to the top-left. In Phaser 2 this was achieved via the `anchor` property but in Phaser 3 it's the `originX` and `originY` properties instead.
+**Dica:** Você pode usar `setOrigin` para mudar isso. Por exemplo, o código: `this.add.image(0, 0, 'sky').setOrigin(0, 0)` irá redefinir a posição de desenho da imagem para o canto superior esquerdo. No Phaser 2, isso foi conseguido através da propriedade `anchor`, mas no Phaser 3 são as propriedades` originX` e `originY`.
 
-The order in which game objects are displayed matches the order in which you create them. So if you wish to place a star sprite above the background, you would need to ensure that it was added as an image second, after the sky image:
+A ordem em que os objetos do jogo são exibidos corresponde à ordem em que você os criou. Então, se você deseja colocar um sprite de uma estrela acima do fundo, você precisa garantir que ele foi adicionado como uma segunda imagem, após a imagem do céu:
 
 ```
 function create ()
@@ -49,5 +48,4 @@ function create ()
     this.add.image(400, 300, 'star');
 }
 ```
-
-If you put the `star` image first it will be covered-up by the sky image.
+Se você colocar a imagem `estrela` primeiro, ela será encoberta pela imagem do céu.

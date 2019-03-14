@@ -6,9 +6,9 @@ author: Richard Davey
 twitter: photonstorm
 ---
 
-We've got some lovely tempting platforms, but no-one to run around them. Let's rectify that.
+Temos algumas plataformas prontas para uso, mas ninguém para correr em volta delas. Vamos corrigir isso.
 
-Create a new variable called `player` and add the following code to the `create` function. You can see this in `part5.html`:
+Crie uma nova variável chamada `player` e adicione o seguinte código à função `create`. Você pode encontrar em `part5.html`:
 
 ```
 player = this.physics.add.sprite(100, 450, 'dude');
@@ -39,9 +39,9 @@ this.anims.create({
 
 There are two separate things going on here: the creation of a Physics Sprite and the creation of some animations that it can use.
 
-### Physics Sprite
+### Sprite com Física
 
-The first part of the code creates the sprite:
+A primeira parte do código cria o sprite:
 
 ```
 player = this.physics.add.sprite(100, 450, 'dude');
@@ -50,19 +50,19 @@ player.setBounce(0.2);
 player.setCollideWorldBounds(true);
 ```
 
-This creates a new sprite called `player`, positioned at 100 x 450 pixels from the bottom of the game. The sprite was created via the Physics Game Object Factory (`this.physics.add`) which means it has a Dynamic Physics body by default.
+Isso cria um novo sprite chamado `player`, posicionado a 100 x 450 pixels da parte inferior do jogo. O sprite foi criado através do Factory Physics Game Object (`this.physics.add`), que significa que ele possui um corpo de Física dinâmico por padrão.
 
-After creating the sprite it is given a slight bounce value of 0.2. This means when it lands after jumping it will bounce ever so slightly. The sprite is then set to collide with the world bounds. The bounds, by default, are on the outside of the game dimensions. As we set the game to be 800 x 600 then the player won't be able to run outside of this area. It will stop the player from being able to run off the edges of the screen or jump through the top.
+Depois de criar o sprite, é dado um leve fator de pulo de 0,2. Isto significa que quando aterrissar depois de pular, ele saltará muito levemente. O sprite é então definido para colidir com os limites do mundo do jogo. Os limites, por padrão, estão do lado de fora das dimensões do jogo. Como definimos o jogo como sendo 800 x 600, o jogador não poderá correr fora desta área. Isso impedirá que o player saia das bordas da tela ou salte pela parte superior.
 
-### Animations
+### Animações
 
-If you glance back to the `preload` function you'll see that 'dude' was loaded as a sprite sheet, not an image. That is because it contains animation frames. This is what the full sprite sheet looks like:
+Voltando sua atenção para a função `preload`, verá que o personagem 'dude' foi carregado como uma sprite sheet, não uma imagem. Isso é porque contém quadros de animação. É assim que o sprite sheet completo se parece:
 
 ![image](dude.png)
 
-There are 9 frames in total, 4 for running left, 1 for facing the camera and 4 for running right. Note: Phaser supports flipping sprites to save on animation frames, but for the sake of this tutorial we'll keep it old school. 
+Há 9 quadros no total, 4 para correr à esquerda, 1 para olhar para a câmera e 4 para correr à direita. Nota: O Phaser suporta virar os sprites para salvar quadros de animação, mas, para este tutorial, vamos mantê-lo no modo antigo.
 
-We define two animations called 'left' and 'right'. Here is the left animation:
+Nós definimos duas animações chamadas 'left' e 'right'. Aqui está a animação da esquerda:
 
 ```
 this.anims.create({
@@ -72,9 +72,8 @@ this.anims.create({
     repeat: -1
 });
 ```
+A animação 'left' usa quadros 0, 1, 2 e 3 e roda a 10 quadros por segundo. O valor 'repeat -1' diz para a animação fazer um loop.
 
-The 'left' animation uses frames 0, 1, 2 and 3 and runs at 10 frames per second. The 'repeat -1' value tells the animation to loop.
+Este é o nosso ciclo de corrida padrão e o repetimos para correr na direção oposta, usando a tecla 'direita'.
 
-This is our standard run-cycle and we repeat it for running in the opposite direction, using the key 'right' and a final one for 'turn'.
-
-**Extra Info:** In Phaser 3 the Animation Manager is a global system. Animations created within it are globally available to all Game Objects. They share the base animation data while managing their own timelines. This allows you to define a single animation once and apply it to as many Game Objects as you require. This is different to Phaser 2 where animations belonged specifically to the Game Objects they were created on.
+**Informação Extra:** No Phaser 3, o Animation Manager é um sistema global. Animações criadas dentro dele estão disponíveis globalmente para todos os Objetos do Jogo. Eles compartilham os dados básicos de animação enquanto gerenciam suas próprias timelines. Isso permite definir uma única animação uma vez e aplicá-la a quantos Objetos forem necessários. Isso é diferente do Phaser 2, no qual as animações pertenciam especificamente aos Objetos em que foram criados.

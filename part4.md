@@ -6,19 +6,19 @@ author: Richard Davey
 twitter: photonstorm
 ---
 
-We just added a bunch of code to our `create` function that deserves a more detailed explanation. First, this part:
+Adicionamos um monte de códigos à nossa função `create` que merecem uma explicação mais detalhada. Primeiro, esta parte:
 
 ```
 platforms = this.physics.add.staticGroup();
 ```
 
-This creates a new Static Physics Group and assigns it to the local variable `platforms`. In Arcade Physics there are two types of physics bodies: Dynamic and Static. A dynamic body is one that can move around via forces such as velocity or acceleration. It can bounce and collide with other objects and that collision is influenced by the mass of the body and other elements.
+Isso cria um novo Grupo de Física Estática e o atribui à variável local `platforms`. No Arcade Physics existem dois tipos de corpos físicos: Dinâmico e Estático. Um corpo dinâmico é aquele que pode se movimentar por meio de forças como velocidade ou aceleração. Ele pode saltar e colidir com outros objetos e essa colisão é influenciada pela massa do corpo e outros elementos.
 
-In stark contrast, a Static Body simply has a position and a size. It isn't touched by gravity, you cannot set velocity on it and when something collides with it, it never moves. Static by name, static by nature. And perfect for the ground and platforms that we're going to let the player run around on.
+Em contraste, um corpo estático simplesmente tem uma posição e um tamanho. Não é afetado pela gravidade, você não pode ajustar a velocidade dele e quando algo colide com ele, ele nunca se move. Estático por nome, estático por natureza. E perfeito para o chão e plataformas que vamos deixar o jogador correr por aí.
 
-But what is a Group? As their name implies they are ways for you to group together similar objects and control them all as one single unit. You can also check for collision between Groups and other game objects. Groups are capable of creating their own Game Objects via handy helper functions like `create`. A Physics Group will automatically create physics enabled children, saving you some leg-work in the process.
+Mas o que é um grupo? Como o nome indica, são maneiras de agrupar objetos semelhantes e controlá-los como uma única unidade. Você também pode verificar a colisão entre Grupos e outros objetos do jogo. Os grupos são capazes de criar seus próprios Game Objects através de funções auxiliares como `create`. Um Grupo de Física criará automaticamente filhos habilitados para física, poupando-lhe um pouco de trabalho de braçal no processo.
 
-With our platform Group made we can now use it to create the platforms:
+Com o nosso Grupo de plataformas feito podemos usá-lo para criar as plataformas:
 
 ```
 platforms.create(400, 568, 'ground').setScale(2).refreshBody();
@@ -28,24 +28,23 @@ platforms.create(50, 250, 'ground');
 platforms.create(750, 220, 'ground');
 ```
 
-As we saw previously it creates this scene:
+Como vimos anteriormente, ele cria esta cena:
 
-During our preload we imported a 'ground' image. It's a simple green rectangle, 400 x 32 pixels in size and will serve for our basic plaform needs:
+No preload, importamos a imagem 'ground'. É um simples retângulo verde, com 400 x 32 pixels de tamanho e servirá para nossas necessidades básicas de plataforma:
 
 ![image](platform.png)
 
-The first line of code above adds a new ground image at 400 x 568 (remember, images are positioned based on their center) - the problem is that we need this platform to span the full width of our game, otherwise the player will just drop off the sides. To do that we scale it x2 with the function `setScale(2)`. It's now 800 x 64 in size, which is perfect for our needs. The call to `refreshBody()` is required because we have scaled a _static_ physics body, so we have to tell the physics world about the changes we made.
+A primeira linha de código acima adiciona uma nova imagem ground em 400 x 568 (lembre-se, as imagens são posicionadas com base no seu centro) - o problema é que precisamos dessa plataforma para abranger toda a largura do nosso jogo, caso contrário o jogador cai dos lados. Para fazer isso nós escalamos x2 com a função `setScale(2)`. O chão agora mede 800 x 64, que é perfeito para as nossas necessidades. A chamada `refreshBody()` é necessária porque escalamos um corpo físico _estático_, então temos que dizer ao physics world sobre as mudanças que fizemos.
 
-The ground is scaled and in place, so it's time for the other platforms:
+O chão é escalado e no lugar, então é hora das outras plataformas:
 
 ```
 platforms.create(600, 400, 'ground');
 platforms.create(50, 250, 'ground');
 platforms.create(750, 220, 'ground');
 ```
+O processo é exatamente o mesmo de antes, mas não precisamos escalar essas plataformas já que elas já têm o tamanho certo.
 
-The process is exactly the same as before, only we don't need to scale these platforms as they're the right size already.
+3 plataformas são colocadas ao redor da tela, separadas justamente para permitir que o jogador pule para elas.
 
-3 platforms are placed around the screen, the right distances apart to allow the player to leap up to them.
-
-So let's add our player.
+Então vamos adicionar nosso jogador.

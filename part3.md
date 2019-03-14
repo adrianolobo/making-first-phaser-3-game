@@ -6,11 +6,11 @@ author: Richard Davey
 twitter: photonstorm
 ---
 
-Under the hood `this.add.image` is creating a new Image Game Object and adding it to the current Scenes display list. This list is where all of your Game Objects live. You could position the image anywhere and Phaser will not mind. Of course, if it's outside of the region 0x0 to 800x600 then you're not going to visually see it, because it'll be "off screen", but it will still exist within the Scene.
+Por baixo dos panos `this.add.image` está criando um novo Game Object de Imagem adicionando-o à lista de exibição atual da Scene. Esta lista é onde todos os seus Game Objects vivem. Você poderia posicionar a imagem em qualquer lugar e o Phaser não se importaria. Claro, se estiver fora da região 0x0 a 800x600, você não o verá, porque estará "fora da tela", mas ainda existirá dentro da cena.
 
-The Scene itself has no fixed size and extends infinitely in all directions. The Camera system controls your view into the Scene and you can move and zoom the active camera as required. You can also create new cameras for other views into the Scene. This topic is beyond the scope of this specific tutorial, suffice to say the camera system in Phaser 3 is significantly more powerful than in v2. Things that were literally not possible before now are.
+A cena em si não tem tamanho fixo e se estende infinitamente em todas as direções. O sistema de câmera controla sua visualização e você pode mover e aplicar zoom na câmera que está ativa conforme necessário. Você também pode criar novas câmeras para outras visualizações da cena. Este tópico está além do escopo deste tutorial, basta dizer que o sistema de câmeras no Phaser 3 é significativamente mais poderoso do que na versão 2. Coisas que não eram possíveis, agora são.
 
-For now let's build up the Scene by adding a background image and some platforms. Here is the updated `create` function:
+Por ora, vamos construir a Scene adicionando uma imagem de fundo e algumas plataformas. Aqui está a função `create` atualizada:
 
 ```
 var platforms;
@@ -29,7 +29,7 @@ function create ()
 }
 ```
 
-Glancing quickly at the code you'll see a call to `this.physics`. This means we're using the Arcade Physics system, but before we can do that we need to add it to our Game Config to tell Phaser our game requires it. So let's update that to include physics support. Here is the revised game config:
+Em uma rápida olhada pelo código, você verá uma chamada para `this.physics`. Isso significa que estamos usando o sistema Arcade Physics, mas antes que possamos fazer isso, precisamos adicioná-lo ao nosso Game Config para informar ao Phaser que nosso jogo exige isso. Então, vamos atualizar isso para incluir suporte à física. Aqui está a configuração do jogo revisada:
 
 ```
 var config = {
@@ -50,9 +50,8 @@ var config = {
     }
 };
 ```
-
-The new addition is the `physics` property. With this code in place if you run it, which you'll find as `part4.html` in the tutorial zip file, you should see a much more game-like scene:
+A nova adição é a propriedade `physics`. Com este código no lugar, o qual você pode encontrar no arquivo zip do tutorial como `part4.html`, se você executá-lo você verá uma cena muito mais parecida com um jogo:
 
 ![image](part4.png)
 
-We've got a backdrop and some platforms, but how exactly are those platforms working?
+Temos um plano de fundo e algumas plataformas, mas como funcionam essas plataformas?
