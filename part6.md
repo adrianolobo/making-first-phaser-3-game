@@ -6,28 +6,28 @@ author: Richard Davey
 twitter: photonstorm
 ---
 
-Phaser has support for a variety of different physics systems, each acting as a plugin available to any Phaser Scene. At the time of writing it ships with Arcade Physics, Impact Physics and Matter.js Physics. For the sake of this tutorial we will be using the Arcade Physics system for our game, which is simple and light-weight, perfect for mobile browsers.
+O Phaser tem suporte para uma variedade de diferentes sistemas de física, cada um atua como um plugin disponível para qualquer Scene do Phaser. No presente momento ele dispõe de Arcade Physics, Impact Physics e Matter.js Physics. Neste tutorial, usaremos o sistema Arcade Physics para o nosso jogo, que é simples e leve, perfeito para navegadores móveis.
 
-When a Physics Sprite is created it is given a `body` property, which is a reference to its Arcade Physics Body. This represents the sprite as a physical body in Phasers Arcade Physics engine. The body object has a lot of properties and methods that we can play with. 
+Quando um Physics Sprite é criado, ele recebe uma propriedade `body`, que é uma referência ao seu Arcade Physics Body. Este representa o sprite como um corpo físico na engine Arcade Physics. O objeto body tem muitas propriedades e métodos os quais podemos brincar.
 
-For example, to simulate the effects of gravity on a sprite, it's as simple as writing:
+Por exemplo, para simular os efeitos da gravidade em um sprite, basta escrevermos:
 
 `player.body.setGravityY(300)`
 
-This is an arbitrary value, but logically, the higher the value, the heavier your object feels and the quicker it falls. If you add this to your code or run `part5.html` you will see that the player falls down without stopping, completely ignoring the ground we created earlier:
+Este é um valor arbitrário, mas logicamente, quanto maior o valor, mais pesado  seu objeto aparenta e mais rápido ele cai. Se você adicionar isso ao seu código ou executar `part5.html`, verá que o player cai sem parar, ignorando completamente o terreno que criamos anteriormente:
 
 ![image](part5.png)
 
-The reason for this is that we're not yet testing for collision between the ground and the player.
+A razão para isso é que ainda não estamos testando a colisão entre o solo e o jogador.
 
-We already told Phaser that our ground and platforms would be static bodies. Had we not done that, and created dynamic ones instead, then when the player collided with them it would stop for a moment and then everything would have collapsed. This is because unless told otherwise, the ground sprite is a moving physical object and when the player hits it, the resulting force of the collision is applied to the ground, therefore, the two bodies exchange their velocities and ground starts falling as well.
+Nós já dissemos ao Phaser que nosso solo e nossas plataformas seriam corpos estáticos. Se não tivéssemos feito isso e tivessemos criado eles dinâmicos, quando o jogador colidisse com eles, pararia por um momento e então tudo teria desmoronado. Isto porque, a menos que seja dito o contrário, o sprite ground é um objeto físico em movimento e quando o jogador toca nele, a força resultante da colisão é aplicada ao ground, fazendo com que, os dois corpos troquem suas velocidades e o ground começa a cair também.
 
-In order to allow the player to collide with the platforms we can create a Collider object. This object monitors two physics objects (which can include Groups) and checks for collisions or overlap between them. If that occurs it can then optionally invoke your own callback, but for the sake of just colliding with platforms we don't require that:
+Para permitir que o jogador colida com as plataformas, podemos criar um objeto Collider. Esse objeto monitora dois objetos físicos (pode ser incluido Groups) e verifica colisões ou sobreposição entre eles. Se isso ocorrer, é possível opcionalmente, invocar seu callback, mas não exigimos isso apenas para colidir com as plataformas:
 
 ```
 this.physics.add.collider(player, platforms);
 ```
 
-The Collider is the one that performs the magic. It takes two objects and tests for collision and performs separation against them. In this case we're giving it the player sprite and the platforms Group. It's clever enough to run collision against all Group members, so this one call will collide against the ground and all platforms. The result is a firm platform that doesn't collapse:
+O Collider é que realiza a magia. Recebe dois objetos, testa colisão e executa a separação contra eles. Neste caso, estamos passando o sprite do jogador e o grupo de plataformas. Ele é esperto o bastante para executar testar colisões contra todos os membros do Grupo, portanto, esta chamada irá colidir contra o solo e todas as plataformas. O resultado é uma plataforma firme que não entra cai:
 
 ![image](part6.png)
