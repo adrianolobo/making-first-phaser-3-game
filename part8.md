@@ -8,6 +8,8 @@ twitter: photonstorm
 
 It's time to give our little game a purpose. Let's drop a sprinkling of stars into the scene and allow the player to collect them. To achieve this we'll create a new Group called 'stars' and populate it. In our create function we add the following code (this can be seen in `part8.html`):
 
+É hora de dar ao nosso joguinho um propósito. Vamos jogar algumas estrelas na cena e permitir que o jogador as colete. Para conseguir isso, criaremos um novo grupo chamado 'stars' e o preencheremos. Em nossa função create, adicionamos o seguinte código (isto poderá ser visto em `part8.html`):
+
 ```
 stars = this.physics.add.group({
     key: 'star',
@@ -22,23 +24,23 @@ stars.children.iterate(function (child) {
 });
 ```
 
-The process is similar to when we created the platforms Group. As we need the stars to move and bounce we create a dynamic physics group instead of a static one.
+Este processo é semelhante a quando criamos o grupo de plataformas. Como precisamos que as estrelas se movam e saltem, criamos um grupo dinâmico de física em vez de um estático.
 
-Groups are able to take configuration objects to aid in their setup. In this case the group configuration object has 3 parts: First it sets the texture key to be the star image. This means that any children created as a result of the config object will all be given the star texture by default. Then it sets the repeat value to be 11. Because it creates 1 child automatically, repeating 11 times means we'll get 12 in total, which is just what we need for our game.
+Grupos são capazes de receber objetos de configuração para ajudar em sua inificalização. Neste caso, o objeto de configuração do grupo tem 3 partes: Primeiro, ele define a key de textura para ser a imagem de estrela. Isso faz com que filhos criados receberão essa textura por padrão. Em seguida, ele define o valor da propriedade repeat como 11. Pois, como ele cria um filho automaticamente, repetindo 11 vezes significa que obteremos 12 no total, o que é exatamente o que precisamos para o nosso jogo.
 
-The final part is `setXY` - this is used to set the position of the 12 children the Group creates. Each child will be placed starting at x: 12, y: 0 and with an x step of 70. This means that the first child will be positioned at 12 x 0, the second one is 70 pixels on from that at 82 x 0, the third one is at 152 x 0, and so on. The 'step' values are a really handy way of spacing out a Groups children during creation. The value of 70 is chosen because it means all 12 children will be perfectly spaced out across the screen.
+A parte final é `setXY` - isto é usado para definir a posição dos 12 filhos que o Grupo cria. Cada filho será posicionado começando em x: 12, y: 0 aumentando x em 70 a cada vez. Isso significa que o primeiro filho será posicionado em 12 x 0, o segundo será 70 pixels a diante, em 82 x 0, o terceiro está em 152 x 0 e assim por diante. A propriedade "step" é uma maneira realmente útil de espaçar um grupo de filhos durante a criação. foi escolhido o número 70 porque todas as 12 crianças estarão perfeitamente espaçadas em toda a tela.
 
-The next piece of code iterates all children in the Group and gives them a random Y bounce value between 0.4 and 0.8. The bounce range is between 0, no bounce at all, and 1, a full bounce. Because the stars are all spawned at y 0 gravity is going to pull them down until they collide with the platforms or ground. The bounce value means they'll randomly bounce back up again until finally settling to rest.
+A próxima parte do código itera por todos os filhos do grupo e fornece um valor de bounce Y aleatório entre 0,4 e 0,8. O intervalo de bounce é entre 0, sem ressalto, e 1, um ressalto total. Como as estrelas são todas geradas em y 0 a gravidade irá puxar elas para baixo até colidirem com as plataformas ou com o solo. O valor de bounce significa que eles retornarão aleatoriamente até que finalmente se acomodem.
 
-If we were to run the code like it is now the stars would fall through the bottom of the game and out of sight. To stop that we need to check for their collision against the platforms. We can use another Collider object to do this:
+Se fôssemos rodar o código como está agora, as estrelas iriam cair para baixo do jogo e sumiriam de vista. Para parar, precisamos checar sua colisão contra as plataformas. Podemos usar outro objeto Collider para fazer isso:
 
 `this.physics.add.collider(stars, platforms);`
 
-As well as doing this we will also check to see if the player overlaps with a star or not:
+Além de fazer isso, também verificaremos se o jogador se sobrepõe a uma estrela ou não:
 
 `this.physics.add.overlap(player, stars, collectStar, null, this);`
 
-This tells Phaser to check for an overlap between the player and any star in the stars Group. If found then they are passed to the 'collectStar' function:
+Isso diz ao Phaser para verificar se há sobreposição entre o player e qualquer estrela no grupo de estrelas. Se encontradas, elas são passadas para a função 'collectStar':
 
 ```
 function collectStar (player, star)
@@ -47,6 +49,6 @@ function collectStar (player, star)
 }
 ```
 
-Quite simply the star has its physics body disabled and its parent Game Object is made inactive and invisible, which removes it from display. Running the game now gives us a player that can dash about, jump, bounce off the platforms and collecting the stars that fall from above. Not bad for a few lines of hopefully mostly quite readable code :)
+Bem simples, a estrela tem sua física desabilitada e seu Game Object pai fica inativo e invisível, removendo sua exibição. Rodando o jogo agora nos dá um player que pode correr, pular, saltar das plataformas e coletar estrelas que caem de cima. Nada mal para algumas linhas de código, na maior parte, espero que, bem legível :)
 
 ![image](part8.png)

@@ -6,11 +6,11 @@ author: Richard Davey
 twitter: photonstorm
 ---
 
-Colliding is all good and well, but we really need the player to move. You would probably think of heading to the documentation and searching about how to add an event listener, but that is not necessary here. Phaser has a built-in Keyboard manager and one of the benefits of using that is this handy little function:
+As Colisões agora vão muito bem, mas realmente precisamos que o jogador se mova. Você provavelmente pensaria em ir para a documentação e pesquisar como adicionar um event listener, mas isso não é necessário aqui. O Phaser tem um gerenciador de inputs do teclado integrado e um dos benefícios isto é essa pequena função:
 
 `cursors = this.input.keyboard.createCursorKeys();`
 
-This populates the cursors object with four properties: up, down, left, right, that are all instances of Key objects. Then all we need to do is poll these in our `update` loop:
+Isso preenche o objeto de cursores com quatro propriedades: up, down, left, right, que são todas as instâncias do objeto Key. Então tudo o que precisamos fazer é chamar eles em nosso loop `update`:
 
 ```
 if (cursors.left.isDown)
@@ -38,16 +38,16 @@ if (cursors.up.isDown && player.body.touching.down)
 }
 ```
 
-Although we've added a lot of code it should all be pretty readable.
+Embora tenhamos adicionado muito código, tudo deve ser bem legível.
 
-The first thing it does is check to see if the left key is being held down. If it is we apply a negative horizontal velocity and start the 'left' running animation. If they are holding down 'right' instead we literally do the opposite. By clearing the velocity and setting it in this manner, every frame, it creates a 'stop-start' style of movement.
+A primeira coisa o código faz é verificar se a tecla esquerda está sendo pressionada. Se for o caso, aplicamos uma velocidade horizontal negativa e iniciamos a animação de execução 'left'. Se eles estão pressionando a tecla da direita, em vez disso, nós fazemos o oposto. Já que estamos resetando a velocidade e ajustando-a desta maneira, em cada quadro, cria-se um estilo de movimento "stop-start".
 
-The player sprite will move only when a key is held down and stop immediately they are not. Phaser also allows you to create more complex motions, with momentum and acceleration, but this gives us the effect we need for this game. The final part of the key check sets the animation to 'turn' and zero the horizontal velocity if no key is held down.
+O sprite do jogador se moverá apenas quando uma tecla estiver pressionada e parará imediatamente quando não estiver. O Phaser também permite criar movimentos mais complexos, com impulso e aceleração, mas já temos o efeito que precisamos para este jogo. A parte final da verificação da tecla define a animação para 'turn' e zera a velocidade horizontal caso nenhuma tecla estiver pressionada.
 
-### Jump to it
+### Pule nisso
 
-The final part of the code adds the ability to jump. The up cursor is our jump key and we test if that is down. However we also test if the player is touching the floor, otherwise they could jump while in mid-air.
+A parte final do código adiciona a capacidade de pular. O cursor para cima é a nossa tecla de salto e testamos se está pressionada. No entanto, também testamos se o jogador está tocando o chão, se não fizermos isto, eles poderá pular no ar.
 
-If both of these conditions are met we apply a vertical velocity of 330 px/sec sq. The player will fall to the ground automatically because of gravity. With the controls in place we now have a game world we can explore. Load up part7.html and have a play. Try tweaking values like the 330 for the jump to lower and higher values to see the effect it will have.
+Se ambas as condições forem atendidas, aplicamos uma velocidade vertical de 330 px/seg. O jogador cairá no chão automaticamente por causa da gravidade. Com os controles configurados, agora temos um jogo que podemos explorar. Carregue a part7.html e jogue. Tente ajustar valores como o de pulo de 330 para valores mais baixos e mais altos e veja o efeito que ele terá.
 
 ![image](part7.png)

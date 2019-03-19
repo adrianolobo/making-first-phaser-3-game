@@ -6,22 +6,21 @@ author: Richard Davey
 twitter: photonstorm
 ---
 
-There are two final touches we're going to add to our game: an enemy to avoid that can kill the player, and a score when you collect the stars. First, the score.
+Há dois toques finais que vamos adicionar ao nosso jogo: um inimigo para evitar, que pode matar o jogador, e uma pontuação quando você coletar as estrelas. Primeiro, a pontuação.
 
-To do this we'll make use of a Text Game Object. Here we create two new variables, one to hold the actual score and the text object itself:
+Para fazer isso, vamos utilizar um Text Game Object. Criamos duas novas variáveis, uma para guardar a pontuação real outra para o próprio objeto de texto:
 
 ```
 var score = 0;
 var scoreText;
 ```
-
-The `scoreText` is set-up in the `create` function:
+O `scoreText` foi configurado na função `create`:
 
 `scoreText = this.add.text(16, 16, 'score: 0', { fontSize: '32px', fill: '#000' });`
 
-16 x 16 is the coordinate to display the text at. 'score: 0' is the default string to display and the object that follows contains a font size and fill color. By not specifying which font we'll actually use the Phaser default, which is Courier.
+16 x 16 é a coordenada em que o texto será exibito. 'score: 0' é a string padrão a ser exibida e o objeto a seguir contém o tamanho e cor da fonte. Ao não especificar qual fonte usaremos o Phaser utilizará seu padrão, que é Courier.
 
-Next we need to modify the `collectStar` function so that when the player picks-up a star their score increases and the text is updated to reflect this:
+Em seguida, precisamos modificar a função `collectStar` para que, quando o jogador pegar uma estrela, sua pontuação aumente e o texto seja atualizado:
 
 ```
 function collectStar (player, star)
@@ -33,8 +32,8 @@ function collectStar (player, star)
 }
 ```
 
-So 10 points are added for every star and the `scoreText` is updated to show this new total. If you run `part9.html` you will see the stars fall and the score increase as you collect them.
+Com isso 10 pontos são adicionados para cada estrela e o `scoreText` é atualizado para mostrar este novo total. Se você executar `part9.html`, verá as estrelas caírem e a pontuação aumentará conforme você as coleta.
 
 ![image](part9.png)
 
-In the final part we'll add some baddies.
+Na parte final, vamos adicionar alguns vilões.

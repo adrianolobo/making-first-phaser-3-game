@@ -1,16 +1,16 @@
 {
-    "title": "Making your first Phaser game",
+    "title": "Criando seu primeiro jogo com Phaser",
     "icon": "grid",
     "items": [
-        { "page": "index", "label": "1. Introduction" },
-        { "page": "part2", "label": "2. Loading Assets" },
-        { "page": "part3", "label": "3. World Building" },
-        { "page": "part4", "label": "4. The Platforms" },
-        { "page": "part5", "label": "5. The Player" },
-        { "page": "part6", "label": "6. Adding Physics" },
-        { "page": "part7", "label": "7. Keyboard controls" },
-        { "page": "part8", "label": "8. Collecting Stars" },
-        { "page": "part9", "label": "9. Scores and Scoring" },
-        { "page": "part10", "label": "10. Bouncing Bombs" }
+        { "page": "index", "label": "1. Introdução" },
+        { "page": "part2", "label": "2. Carregando Assets" },
+        { "page": "part3", "label": "3. Construção do Mundo" },
+        { "page": "part4", "label": "4. As Plataformas" },
+        { "page": "part5", "label": "5. O Jogador" },
+        { "page": "part6", "label": "6. Adicionando Física" },
+        { "page": "part7", "label": "7. Controles do teclado" },
+        { "page": "part8", "label": "8. Coletando estrelas" },
+        { "page": "part9", "label": "9. Pontuação e Pontuando" },
+        { "page": "part10", "label": "10. Bombas Saltitantes" }
     ]
 }

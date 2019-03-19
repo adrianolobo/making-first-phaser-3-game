@@ -6,11 +6,11 @@ author: Richard Davey
 twitter: photonstorm
 ---
 
-In order to round our game out it's time to add some baddies. This will give a nice element of challenge to the game, something that was previously missing.
+Para deixar nosso jogo mais completo, é hora de adicionar alguns vilões. Isso dará um bom elemento de desafio, algo que antes estava faltando.
 
-The idea is this: When you collect all the stars the first time it will release a bouncing bomb. The bomb will just randomly bounce around the level and if you collide with it, you die. All of the stars will respawn so you can collect them again, and if you do, it will release another bomb. This will give the player a challenge: get as high a score as possible without dying.
+A ideia é: Quando you coletar todas as estrelas pela primeira vez, será lançado uma bomba saltitante. A bomba irá saltar aleatoriamente pela fase e se você colidir com ela, você morre. Todas as estrelas irão reaparecer para que você as colete de novo, e se você o fizer, uma nova bomba será lançada. Isto irá dar ao jogador um desafio: conseguir a pontuação mais alta sem morrer.
 
-The first thing we need is a Group for the bombs and a couple of Colliders:
+A primeira coisa que precisamos é um Group para as bombas e alguns Colliders:
 
 ```
 bombs = this.physics.add.group();
@@ -20,7 +20,7 @@ this.physics.add.collider(bombs, platforms);
 this.physics.add.collider(player, bombs, hitBomb, null, this);
 ```
 
-The bombs will of course bounce off the platforms, and if the player hits them we'll call the `hitBomb` function. All that will do is stop the game and turn the player red:
+As bombar irão quicar nas plataformas, e se o player encostar nelas nós iremos chamar a função `hitBomb`. Ela irá parar o jogo e pintar o player de vermelho.
 
 ```
 function hitBomb (player, bomb)
@@ -35,7 +35,7 @@ function hitBomb (player, bomb)
 }
 ```
 
-So far, so good, but we need to release a bomb. To do that we modify the `collectStar` function:
+Até agora tudo bem, mas nós precisamos soltar as bombas. Para fazer isto modificaremos a função `collectStar`:
 
 ```
 function collectStar (player, star)
@@ -64,24 +64,24 @@ function collectStar (player, star)
 }
 ```
 
-We use a Group method called `countActive` to see how many stars are left alive. If it's none then the player has collected them all, so we use the iterate function to re-enable all of the stars and reset their y position to zero. This will make all of the stars drop from the top of the screen again.
+Nós utilizamos um método do Grupo chamado `countActive` para ver quantas estrelas sobraram vivas. Se não houver nenhuma, então o jogador coletou todas, então nós utilizamos a função de iterate para reativar todas as estrelas e resetar suas posições para zero. Isto falar com que todas as estrelas caiam do topo da tela de novo;
 
-The next part of the code creates a bomb. First we pick a random x coordinate for it, always on the opposite side of the screen to the player, just to give them a chance. Then the bomb is created, it's set to collide with the world, bounce and have a random velocity.
+A próxima parte do código cria a bomba. Primeiro nós escolhemos uma coordenada x aleatória, sempre no lado oposto ao player, apenas para dar uma chance a ele. Então a bomba é criada, ela é configurada para colidir com o world, quicar e ter uma velocidade aleatória.
 
-The end result is a nice little bomb sprite that rebounds around the screen. Small enough to be easy to avoid, at the start, but as soon as the numbers build up it becomes a lot harder!
+O resultado final é este pequeno sprite de bomba que salta pela tela. pequena o bastante para ser facilmente evitada, no começo, mas assim que os números aumentam começa a ficar bem difícil!
 
 ![image](part10.png)
 
-And our game is done :)
+E o nosso jogo está feito :)
 
-### Conclusion
+### Conclusão
 
-You have now learned how to create a sprite with physics properties, to control its motion and to make it interact with other objects in a small game world. There are lots more things you can do to enhance this. Why not expand the size of the level and allow the camera to scroll? Maybe add in different baddie types, different value pick-ups, or give the player a health bar.
+Você agora aprendeu como criar um sprite com propriedades físicas, controlar seu movimento e torna-lo interativo com outros objetos em um pequeno game world. Existem muitas outras coisas que você pode fazer para aperfeiçoar este jogo. Por que não expandir o tamanho da fase e permitir que a câmera role? Talvez adicionar vilões de diferentes tipos, diferentes valores, ou dar ao player uma barra de vida.
 
-Or for a non-violent style game you could make it a speed-run and simply challenge them to collect the stars as quickly as possible.
+Ou para um jogo não violento, você pode torna-lo um speed-run e desafiar o jogador a coletar as estrelas o mais rápido possível.
 
-With the help of what you have learned in this tutorial and the hundreds of examples available to you, you should now have a solid foundation for a future project. But as always if you have questions, need advice or want to share what you've been working on then feel free to ask for help in the Phaser forum.
+Com o que você aprendeu neste tutorial, e as centenas de exemplos disponíveis, você deve ter agora uma fundação sólida para futuros projetos. Mas como sempre, se você tiver uma dúvida, precisar de um conselho, ou quer compartilhar o que você estrá trabalhando, então sinta-se a vontade para pedir ajuda no forum do Phaser.
 
 ### Facebook Instant Games
 
-Phaser 3 has full support for creating Facebook Instant Games. Now you've learned how to create a Phaser game, why not see how easy it is to convert it into an Instant Game in our dedicated [Getting Started Guide](/tutorials/getting-started-facebook-instant-games).
+Phaser 3 agora tem suporte total para criar Facebook Instant Games. Agora você aprendeu como criar um jogo utilizando o Phaser, por quê não ver como é facil converte-lo em um Instant Game no nosso [Guia de primeiros passos](/tutorials/getting-started-facebook-instant-games).
