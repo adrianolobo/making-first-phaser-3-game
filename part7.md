@@ -40,7 +40,7 @@ if (cursors.up.isDown && player.body.touching.down)
 
 Embora tenhamos adicionado muito código, tudo deve ser bem legível.
 
-A primeira coisa o código faz é verificar se a tecla esquerda está sendo pressionada. Se for o caso, aplicamos uma velocidade horizontal negativa e iniciamos a animação de execução 'left'. Se eles estão pressionando a tecla da direita, em vez disso, nós fazemos o oposto. Já que estamos resetando a velocidade e ajustando-a desta maneira, em cada quadro, cria-se um estilo de movimento "stop-start".
+A primeira coisa que o código faz é verificar se a tecla esquerda está sendo pressionada. Se for o caso, aplicamos uma velocidade horizontal negativa e iniciamos a animação de execução 'left'. Se a tecla da direita da direita esta sendo pressionada, em vez disso, nós fazemos o oposto. Já que estamos resetando a velocidade e ajustando-a desta maneira, em cada quadro, cria-se um estilo de movimento "stop-start".
 
 O sprite do jogador se moverá apenas quando uma tecla estiver pressionada e parará imediatamente quando não estiver. O Phaser também permite criar movimentos mais complexos, com impulso e aceleração, mas já temos o efeito que precisamos para este jogo. A parte final da verificação da tecla define a animação para 'turn' e zera a velocidade horizontal caso nenhuma tecla estiver pressionada.
 

@@ -12,11 +12,11 @@ Adicionamos um monte de códigos à nossa função `create` que merecem uma expl
 platforms = this.physics.add.staticGroup();
 ```
 
-Isso cria um novo Grupo de Física Estática e o atribui à variável local `platforms`. No Arcade Physics existem dois tipos de corpos físicos: Dinâmico e Estático. Um corpo dinâmico é aquele que pode se movimentar por meio de forças como velocidade ou aceleração. Ele pode saltar e colidir com outros objetos e essa colisão é influenciada pela massa do corpo e outros elementos.
+Ela cria um novo Grupo de Física Estática e o atribui à variável local `platforms`. No Arcade Physics existem dois tipos de corpos físicos: Dinâmico e Estático. Um corpo dinâmico é aquele que pode se movimentar por meio de forças como velocidade ou aceleração. Ele pode saltar e colidir com outros objetos e essa colisão é influenciada pela massa do corpo e outros elementos.
 
 Em contraste, um corpo estático simplesmente tem uma posição e um tamanho. Não é afetado pela gravidade, você não pode ajustar a velocidade dele e quando algo colide com ele, ele nunca se move. Estático por nome, estático por natureza. E perfeito para o chão e plataformas que vamos deixar o jogador correr por aí.
 
-Mas o que é um grupo? Como o nome indica, são maneiras de agrupar objetos semelhantes e controlá-los como uma única unidade. Você também pode verificar a colisão entre Grupos e outros objetos do jogo. Os grupos são capazes de criar seus próprios Game Objects através de funções auxiliares como `create`. Um Grupo de Física criará automaticamente filhos habilitados para física, poupando-lhe um pouco de trabalho de braçal no processo.
+Mas o que é um grupo? Como o nome indica, são maneiras de agrupar objetos semelhantes e controlá-los como uma única unidade. Você também pode verificar a colisão entre Grupos e outros objetos do jogo. Os grupos são capazes de criar seus próprios Game Objects através de funções auxiliares como `create`. Um Grupo de Física criará automaticamente filhos habilitados para física, poupando-lhe um pouco de trabalho braçal no processo.
 
 Com o nosso Grupo de plataformas feito podemos usá-lo para criar as plataformas:
 

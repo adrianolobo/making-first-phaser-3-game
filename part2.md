@@ -5,6 +5,7 @@ date: 20th February 2018
 author: Richard Davey
 twitter: photonstorm
 ---
+
 Vamos carregar assets que precisamos para o nosso jogo. Você faz isso fazendo chamadas ao Phaser Loader dentro de uma função da Scene chamada `preload`. O Phaser procurará automaticamente por essa função quando for iniciado e carregará qualquer coisa definida nela.
 
 Atualmente, a função `preload` está vazia. Altere para:
@@ -23,7 +24,7 @@ function preload ()
 }
 ```
 
-Isto irá carregar 5 assets: 4 imagens e uma sprite sheet. Pode parecer óbvio para alguns de vocês, mas eu gostaria de mostrar o primeiro parâmetro, também conhecido como chave do asset (ou seja, 'sky', 'bomba'). Essa string é um link para o asset carregado e é o que você usará no seu código para criar Game Objects. Você está livre para usar qualquer string JavaScript válida como chave.
+Isto irá carregar 5 assets: 4 imagens e uma sprite sheet. Pode parecer óbvio para alguns de vocês, mas eu gostaria de mostrar o primeiro parâmetro, também conhecido como chave do asset (ou seja, 'sky', 'bomb'). Essa string é um link para o asset carregado e é o que você usará no seu código para criar Game Objects. Você está livre para usar qualquer string JavaScript válida como chave.
 
 ### Exibir uma imagem
 
@@ -35,7 +36,7 @@ Você pode encontrar isso em `part3.html`. Se você abri-lo em um navegador, voc
 
 ![image](part3.png)
 
-Os valores `400` e` 300` são as coordenadas x e y da imagem. Por que 400 e 300? É porque no Phaser 3 todos os objetos do jogo são posicionados com base em seu centro por padrão. A imagem de fundo tem 800 x 600 pixels de tamanho, por isso, se fôssemos exibir ela centralizada em 0 x 0, veríamos apenas o canto inferior direito dela. Se o exibirmos em 400 x 300 você verá ela toda.
+Os valores `400` e `300` são as coordenadas x e y da imagem. Por que 400 e 300? É porque no Phaser 3 todos os objetos do jogo são posicionados com base em seu centro por padrão. A imagem de fundo tem 800 x 600 pixels de tamanho, por isso, se fôssemos exibir ela centralizada em 0 x 0, veríamos apenas o canto inferior direito dela. Se o exibirmos em 400 x 300 você verá ela toda.
 
 **Dica:** Você pode usar `setOrigin` para mudar isso. Por exemplo, o código: `this.add.image(0, 0, 'sky').setOrigin(0, 0)` irá redefinir a posição de desenho da imagem para o canto superior esquerdo. No Phaser 2, isso foi conseguido através da propriedade `anchor`, mas no Phaser 3 são as propriedades` originX` e `originY`.
 

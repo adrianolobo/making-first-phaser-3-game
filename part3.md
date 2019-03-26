@@ -29,7 +29,7 @@ function create ()
 }
 ```
 
-Em uma rápida olhada pelo código, você verá uma chamada para `this.physics`. Isso significa que estamos usando o sistema Arcade Physics, mas antes que possamos fazer isso, precisamos adicioná-lo ao nosso Game Config para informar ao Phaser que nosso jogo exige isso. Então, vamos atualizar isso para incluir suporte à física. Aqui está a configuração do jogo revisada:
+Em uma rápida olhada pelo código, você verá uma chamada para `this.physics`. Isso significa que estamos usando o sistema Arcade Physics, mas antes que possamos fazer isso, precisamos adicioná-lo ao nosso Game Config para informar ao Phaser que nosso jogo exige da física Arcade. Então, vamos atualizar-lo para incluir suporte à física. Aqui está a configuração do jogo revisada:
 
 ```
 var config = {

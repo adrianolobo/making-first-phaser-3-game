@@ -6,7 +6,7 @@ author: Richard Davey
 twitter: photonstorm
 ---
 
-Temos algumas plataformas prontas para uso, mas ninguém para correr em volta delas. Vamos corrigir isso.
+Temos algumas plataformas prontas para uso, mas ninguém para correr nelas. Vamos corrigir isso.
 
 Crie uma nova variável chamada `player` e adicione o seguinte código à função `create`. Você pode encontrar em `part5.html`:
 
@@ -37,7 +37,7 @@ this.anims.create({
 });
 ```
 
-There are two separate things going on here: the creation of a Physics Sprite and the creation of some animations that it can use.
+Há duas coisas diferentes acontecendo aqui: a criação de um Physics Sprite e a criação de umas animações que ele pode utilizar.
 
 ### Sprite com Física
 
@@ -52,7 +52,7 @@ player.setCollideWorldBounds(true);
 
 Isso cria um novo sprite chamado `player`, posicionado a 100 x 450 pixels da parte inferior do jogo. O sprite foi criado através do Factory Physics Game Object (`this.physics.add`), que significa que ele possui um corpo de Física dinâmico por padrão.
 
-Depois de criar o sprite, é dado um leve fator de pulo de 0,2. Isto significa que quando aterrissar depois de pular, ele saltará muito levemente. O sprite é então definido para colidir com os limites do mundo do jogo. Os limites, por padrão, estão do lado de fora das dimensões do jogo. Como definimos o jogo como sendo 800 x 600, o jogador não poderá correr fora desta área. Isso impedirá que o player saia das bordas da tela ou salte pela parte superior.
+Depois de criar o sprite, é dado um leve fator de ressalto de 0,2. Isto significa que quando aterrissar depois de pular, ele saltará muito levemente. O sprite é então definido para colidir com os limites do mundo do jogo. Os limites, por padrão, estão do lado de fora das dimensões do jogo. Como definimos o jogo como sendo 800 x 600, o jogador não poderá correr fora desta área. Isso impedirá que o player saia das bordas da tela ou salte pela parte superior.
 
 ### Animações
 

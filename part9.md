@@ -18,7 +18,7 @@ O `scoreText` foi configurado na função `create`:
 
 `scoreText = this.add.text(16, 16, 'score: 0', { fontSize: '32px', fill: '#000' });`
 
-16 x 16 é a coordenada em que o texto será exibito. 'score: 0' é a string padrão a ser exibida e o objeto a seguir contém o tamanho e cor da fonte. Ao não especificar qual fonte usaremos o Phaser utilizará seu padrão, que é Courier.
+16 x 16 é a coordenada em que o texto será exibido. 'score: 0' é a string padrão a ser exibida e o objeto a seguir contém o tamanho e cor da fonte. Ao não especificar qual fonte usaremos o Phaser utilizará seu padrão, que é Courier.
 
 Em seguida, precisamos modificar a função `collectStar` para que, quando o jogador pegar uma estrela, sua pontuação aumente e o texto seja atualizado:
 

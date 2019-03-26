@@ -6,8 +6,6 @@ author: Richard Davey
 twitter: photonstorm
 ---
 
-It's time to give our little game a purpose. Let's drop a sprinkling of stars into the scene and allow the player to collect them. To achieve this we'll create a new Group called 'stars' and populate it. In our create function we add the following code (this can be seen in `part8.html`):
-
 É hora de dar ao nosso joguinho um propósito. Vamos jogar algumas estrelas na cena e permitir que o jogador as colete. Para conseguir isso, criaremos um novo grupo chamado 'stars' e o preencheremos. Em nossa função create, adicionamos o seguinte código (isto poderá ser visto em `part8.html`):
 
 ```
@@ -28,7 +26,7 @@ Este processo é semelhante a quando criamos o grupo de plataformas. Como precis
 
 Grupos são capazes de receber objetos de configuração para ajudar em sua inificalização. Neste caso, o objeto de configuração do grupo tem 3 partes: Primeiro, ele define a key de textura para ser a imagem de estrela. Isso faz com que filhos criados receberão essa textura por padrão. Em seguida, ele define o valor da propriedade repeat como 11. Pois, como ele cria um filho automaticamente, repetindo 11 vezes significa que obteremos 12 no total, o que é exatamente o que precisamos para o nosso jogo.
 
-A parte final é `setXY` - isto é usado para definir a posição dos 12 filhos que o Grupo cria. Cada filho será posicionado começando em x: 12, y: 0 aumentando x em 70 a cada vez. Isso significa que o primeiro filho será posicionado em 12 x 0, o segundo será 70 pixels a diante, em 82 x 0, o terceiro está em 152 x 0 e assim por diante. A propriedade "step" é uma maneira realmente útil de espaçar um grupo de filhos durante a criação. foi escolhido o número 70 porque todas as 12 crianças estarão perfeitamente espaçadas em toda a tela.
+A parte final é `setXY` - isto é usado para definir a posição dos 12 filhos que o Grupo cria. Cada filho será posicionado começando em x: 12, y: 0 aumentando x em 70 a cada vez. Isso significa que o primeiro filho será posicionado em 12 x 0, o segundo será 70 pixels a diante, em 82 x 0, o terceiro está em 152 x 0 e assim por diante. A propriedade "step" é uma maneira realmente útil de espaçar um grupo de filhos durante a criação. foi escolhido o número 70 porque todos os 12 filhos estarão perfeitamente espaçadas em toda a tela.
 
 A próxima parte do código itera por todos os filhos do grupo e fornece um valor de bounce Y aleatório entre 0,4 e 0,8. O intervalo de bounce é entre 0, sem ressalto, e 1, um ressalto total. Como as estrelas são todas geradas em y 0 a gravidade irá puxar elas para baixo até colidirem com as plataformas ou com o solo. O valor de bounce significa que eles retornarão aleatoriamente até que finalmente se acomodem.
 
